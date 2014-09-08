@@ -1,0 +1,22 @@
+﻿<Window x:Class="KeyPad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button x:Name="Button1" Content="1" HorizontalAlignment="Left" Height="38" Margin="31,10,0,0" VerticalAlignment="Top" Width="88" Click="Button1_Click"/>
+        <Button x:Name="Button2" Content="2 ABC" HorizontalAlignment="Left" Height="38" Margin="211,10,0,0" VerticalAlignment="Top" Width="88" Click="Button2_Click"/>
+        <Button x:Name="Button3" Content="3 DEF" HorizontalAlignment="Left" Height="38" Margin="382,10,0,0" VerticalAlignment="Top" Width="88" Click="Button3_Click"/>
+        <Button x:Name="Button4" Content="4 GHI" HorizontalAlignment="Left" Height="38" Margin="31,72,0,0" VerticalAlignment="Top" Width="88" Click="Button4_Click"/>
+        <Button x:Name="Button5" Content="5 JKL" HorizontalAlignment="Left" Height="38" Margin="211,72,0,0" VerticalAlignment="Top" Width="88" Click="Button5_Click"/>
+        <Button x:Name="Button6" Content="6 MNO" HorizontalAlignment="Left" Height="38" Margin="382,72,0,0" VerticalAlignment="Top" Width="88" Click="Button6_Click"/>
+        <Button x:Name="Button7" Content="7 PQRS" HorizontalAlignment="Left" Height="38" Margin="31,136,0,0" VerticalAlignment="Top" Width="88" Click="Button7_Click"/>
+        <Button x:Name="Button8" Content="8 TUV" HorizontalAlignment="Left" Height="38" Margin="211,136,0,0" VerticalAlignment="Top" Width="88" Click="Button8_Click"/>
+        <Button x:Name="Button9" Content="9 WXYZ" HorizontalAlignment="Left" Height="38" Margin="382,136,0,0" VerticalAlignment="Top" Width="88" Click="Button9_Click"/>
+        <Button x:Name="Button10" Content="Delete" HorizontalAlignment="Left" Height="38" Margin="31,202,0,0" VerticalAlignment="Top" Width="88" Click="Button10_Click"/>
+        <Button x:Name="Button11" Content="0" HorizontalAlignment="Left" Height="38" Margin="211,202,0,0" VerticalAlignment="Top" Width="88" Click="Button11_Click"/>
+        <Button x:Name="Button12" Content="Space" HorizontalAlignment="Left" Height="38" Margin="382,202,0,0" VerticalAlignment="Top" Width="88" Click="Button12_Click"/>
+        <TextBox x:Name="TextBox1" HorizontalAlignment="Left" Height="32" Margin="31,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="439"/>
+        <CheckBox Content="Predictive?" HorizontalAlignment="Left" Height="28" Margin="31,245,0,0" VerticalAlignment="Top" Width="88" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+
+    </Grid>
+</Window>
