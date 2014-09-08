@@ -20,13 +20,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KeyPad
-{
+namespace KeyPad {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
+    public partial class MainWindow : Window {
         private Timer Timer = new Timer();  ///Timer to distinguish between clicks
         int clickCount = 0;      ///Variable that keeps a count of clicks
         String text;         ///Variable to store text to be displayed
@@ -36,8 +34,7 @@ namespace KeyPad
         List<String> predictedWords = new List<string>();        ///List of predicted words sent by the model
         String sentence;        ///Variable that stores the text from the text-box
         int index;              ///Variable that keeps a track of the current word in the word list
-        public MainWindow()
-        {
+        public MainWindow() {
             InitializeComponent();
             Timer.Interval = 1000;      ///Interval between two clicks
             Timer.Tick += new EventHandler(Timer_Tick);         ///Event handler
@@ -49,8 +46,7 @@ namespace KeyPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button1_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button1_Click(object sender, RoutedEventArgs e) {
             TextBox1.Text = TextBox1.Text + "1";
         }
 
@@ -62,33 +58,27 @@ namespace KeyPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button2_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button2_Click(object sender, RoutedEventArgs e) {
             ///Non-predictive mode
-            if (predictive == false)
-            {
+            if (predictive == false) {
                 clickCount = clickCount + 1;
 
-                if (clickCount == 1)
-                {
+                if (clickCount == 1) {
                     text = "a";
                     TextBox1.AppendText(text);
                     Timer.Start();
                 }
-                else if (clickCount == 2)
-                {
+                else if (clickCount == 2) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "b";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 3)
-                {
+                else if (clickCount == 3) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "c";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 4)
-                {
+                else if (clickCount == 4) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "2";
                     TextBox1.AppendText(text);
@@ -96,8 +86,7 @@ namespace KeyPad
             }
             
             ///Predictive mode
-            else if (predictive == true)           
-            {
+            else if (predictive == true) {
                 buttonClicks.Add("2");
                 predictedWords=model.Predict(buttonClicks);
                 Display(predictedWords);                
@@ -112,41 +101,34 @@ namespace KeyPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button3_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button3_Click(object sender, RoutedEventArgs e) {
             ///Predictive mode
-            if (predictive == false)
-            {
+            if (predictive == false) {
                 clickCount = clickCount + 1;
 
-                if (clickCount == 1)
-                {
+                if (clickCount == 1) {
                     text = "d";
                     TextBox1.AppendText(text);
                     Timer.Start();
                 }
-                else if (clickCount == 2)
-                {
+                else if (clickCount == 2) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "e";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 3)
-                {
+                else if (clickCount == 3) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "f";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 4)
-                {
+                else if (clickCount == 4) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "3";
                     TextBox1.AppendText(text);
                 }
             }
             ///Predictive mode
-            else if (predictive == true)
-            {
+            else if (predictive == true) {
                 buttonClicks.Add("3");
                 predictedWords = model.Predict(buttonClicks);
                 Display(predictedWords);
@@ -161,33 +143,27 @@ namespace KeyPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button4_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button4_Click(object sender, RoutedEventArgs e) {
             ///non-predictive mode
-            if (predictive == false)
-            {
+            if (predictive == false) {
                 clickCount = clickCount + 1;
 
-                if (clickCount == 1)
-                {
+                if (clickCount == 1) {
                     text = "g";
                     TextBox1.AppendText(text);
                     Timer.Start();
                 }
-                else if (clickCount == 2)
-                {
+                else if (clickCount == 2) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "h";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 3)
-                {
+                else if (clickCount == 3) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "i";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 4)
-                {
+                else if (clickCount == 4) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "4";
                     TextBox1.AppendText(text);
@@ -195,13 +171,11 @@ namespace KeyPad
             }
 
             ///Predictive mode
-            else if (predictive == true)
-            {
+            else if (predictive == true) {
                 buttonClicks.Add("4");
                 predictedWords = model.Predict(buttonClicks);
                 Display(predictedWords);
             }
-
         }
 
         /// <summary>
@@ -212,41 +186,34 @@ namespace KeyPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button5_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button5_Click(object sender, RoutedEventArgs e) {
             ///Non-predictive mode
-            if (predictive == false)
-            {
+            if (predictive == false) {
                 clickCount = clickCount + 1;
 
-                if (clickCount == 1)
-                {
+                if (clickCount == 1) {
                     text = "j";
                     TextBox1.AppendText(text);
                     Timer.Start();
                 }
-                else if (clickCount == 2)
-                {
+                else if (clickCount == 2) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "k";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 3)
-                {
+                else if (clickCount == 3) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "l";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 4)
-                {
+                else if (clickCount == 4) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "5";
                     TextBox1.AppendText(text);
                 }
             }
             ///Predictive mode
-            else if (predictive == true)
-            {
+            else if (predictive == true) {
                 buttonClicks.Add("5");
                 predictedWords = model.Predict(buttonClicks);
                 Display(predictedWords);
@@ -260,41 +227,34 @@ namespace KeyPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button6_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button6_Click(object sender, RoutedEventArgs e) {
             ///Non-predictive mode
-            if (predictive == false)
-            {
+            if (predictive == false) {
                 clickCount = clickCount + 1;
 
-                if (clickCount == 1)
-                {
+                if (clickCount == 1) {
                     text = "m";
                     TextBox1.AppendText(text);
                     Timer.Start();
                 }
-                else if (clickCount == 2)
-                {
+                else if (clickCount == 2) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "n";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 3)
-                {
+                else if (clickCount == 3) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "o";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 4)
-                {
+                else if (clickCount == 4) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "6";
                     TextBox1.AppendText(text);
                 }
             }
             ///Predicitve mode
-            else if (predictive == true)
-            {
+            else if (predictive == true) {
                 buttonClicks.Add("6");
                 predictedWords = model.Predict(buttonClicks);
                 Display(predictedWords);
@@ -310,48 +270,40 @@ namespace KeyPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button7_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button7_Click(object sender, RoutedEventArgs e) {
             ///non-Predictive mode
-            if (predictive == false)
-            {
+            if (predictive == false) {
                 clickCount = clickCount + 1;
 
-                if (clickCount == 1)
-                {
+                if (clickCount == 1) {
                     text = "p";
                     TextBox1.AppendText(text);
                     Timer.Start();
                 }
-                else if (clickCount == 2)
-                {
+                else if (clickCount == 2) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "q";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 3)
-                {
+                else if (clickCount == 3) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "r";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 4)
-                {
+                else if (clickCount == 4) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "s";
                     TextBox1.AppendText(text);
                 }
 
-                else if (clickCount == 5)
-                {
+                else if (clickCount == 5) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "7";
                     TextBox1.AppendText(text);
                 }
             }
             ///predicitve mode
-            else if (predictive == true)
-            {
+            else if (predictive == true) {
                 buttonClicks.Add("7");
                 predictedWords = model.Predict(buttonClicks);
                 Display(predictedWords);
@@ -366,46 +318,38 @@ namespace KeyPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button8_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button8_Click(object sender, RoutedEventArgs e) {
             ///non-predictive mode
-            if (predictive == false)
-            {
+            if (predictive == false) {
                 clickCount = clickCount + 1;
 
-                if (clickCount == 1)
-                {
+                if (clickCount == 1) {
                     text = "t";
                     TextBox1.AppendText(text);
                     Timer.Start();
                 }
-                else if (clickCount == 2)
-                {
+                else if (clickCount == 2) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "u";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 3)
-                {
+                else if (clickCount == 3) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "v";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 4)
-                {
+                else if (clickCount == 4) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "8";
                     TextBox1.AppendText(text);
                 }
             }
             ///predictive mode
-            else if (predictive == true)
-            {
+            else if (predictive == true) {
                 buttonClicks.Add("8");
                 predictedWords = model.Predict(buttonClicks);
                 Display(predictedWords);
             }
-
         }
 
         /// <summary>
@@ -417,48 +361,40 @@ namespace KeyPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button9_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button9_Click(object sender, RoutedEventArgs e) {
             ///non-predictive mode
-            if (predictive == false)
-            {
+            if (predictive == false) {
                 clickCount = clickCount + 1;
 
-                if (clickCount == 1)
-                {
+                if (clickCount == 1) {
                     text = "w";
                     TextBox1.AppendText(text);
                     Timer.Start();
                 }
-                else if (clickCount == 2)
-                {
+                else if (clickCount == 2) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "x";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 3)
-                {
+                else if (clickCount == 3) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "y";
                     TextBox1.AppendText(text);
                 }
-                else if (clickCount == 4)
-                {
+                else if (clickCount == 4) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "z";
                     TextBox1.AppendText(text);
                 }
 
-                else if (clickCount == 4)
-                {
+                else if (clickCount == 4) {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
                     text = "9";
                     TextBox1.AppendText(text);
                 }
             }
             ///predicitive mode
-            else if (predictive == true)
-            {
+            else if (predictive == true) {
                 buttonClicks.Add("9");
                 predictedWords = model.Predict(buttonClicks);
                 Display(predictedWords);
@@ -472,11 +408,9 @@ namespace KeyPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button10_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button10_Click(object sender, RoutedEventArgs e) {
             ///non-predicitve mode
-            if (predictive == false)
-            {
+            if (predictive == false) {
                 if (TextBox1.Text.Length != 0)
                 {
                     TextBox1.Text = TextBox1.Text.Remove(TextBox1.Text.Length - 1);
@@ -484,18 +418,15 @@ namespace KeyPad
             }
 
             ///predictive mode
-            else if (predictive==true)
-            {
+            else if (predictive==true) {
                 int spacePosition = 0;
                 string textInTextBox = TextBox1.Text;
                 spacePosition = textInTextBox.LastIndexOf(' ', textInTextBox.Length - 1); 
-                if (spacePosition < 1)
-                {
+                if (spacePosition < 1) {
 
                     textInTextBox = "";
                 }
-                else
-                {
+                else {
                     textInTextBox = textInTextBox.Remove(spacePosition);
                 }
                 TextBox1.Text = textInTextBox;
@@ -509,38 +440,31 @@ namespace KeyPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button11_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button11_Click(object sender, RoutedEventArgs e) {
             ///non-predictive mode
-            if (predictive == false)
-            {
+            if (predictive == false) {
                 text = "0";
                 TextBox1.AppendText(text);
             }
             ///Predictive mode
-            else if (predictive == true)
-            {
+            else if (predictive == true) {
                 index = index + 1;
                 int spacePosition = TextBox1.Text.LastIndexOf(' ');
 
-                if (spacePosition < 1)
-                {
+                if (spacePosition < 1) {
                     TextBox1.Text = predictedWords[index];
                 }
 
-                else
-                {
+                else {
                     string textInTextBox = TextBox1.Text;
                     textInTextBox = textInTextBox.Remove(spacePosition);
-                    if (index >= predictedWords.Count())
-                    {
+                    if (index >= predictedWords.Count()) {
                         index = index % predictedWords.Count();
                     }
                     textInTextBox = textInTextBox +" "+predictedWords[index];
                     TextBox1.Text = textInTextBox;
                 }
             }
-
         }
 
         /// <summary>
@@ -548,32 +472,26 @@ namespace KeyPad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button12_Click(object sender, RoutedEventArgs e)
-        {
-            if (predictive == false)
-            {
+        private void Button12_Click(object sender, RoutedEventArgs e) {
+            if (predictive == false) {
                 text = " ";
                 TextBox1.AppendText(text);
             }
-            else if(predictive==true)
-            {
+            else if(predictive==true) {
                 buttonClicks.Clear();
                 sentence = TextBox1.Text+" ";
             }
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
+        private void CheckBox_Checked(object sender, RoutedEventArgs e) {
             predictive = true;
         }
 
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e) {
             predictive = false;
         }
 
-        void Timer_Tick(object sender, EventArgs e)
-        {
+        void Timer_Tick(object sender, EventArgs e) {
             Timer.Stop();
             clickCount = 0;
            TextBox1.Text = TextBox1.Text;
@@ -585,24 +503,20 @@ namespace KeyPad
         /// 
         /// </summary>
         /// <param name="words"></param>
-        public void Display(List<String>words)
-        {
-            if (words.Count != 0)
-            {
+        public void Display(List<String>words) {
+            if (words.Count != 0) {
                 index = 0;
                 text = words[0];
                 TextBox1.Text =sentence+text;
             }
-            else
-            {
+            else {
                 text = null;
-                for (int i = 0; i < buttonClicks.Count(); i++)
-                {
+                for (int i = 0; i < buttonClicks.Count(); i++) {
                    text = text+"-";
                 }
-                TextBox1.Text = sentence+text;
-                
+                TextBox1.Text = sentence+text;                
             }
         }
     }
 }
+
